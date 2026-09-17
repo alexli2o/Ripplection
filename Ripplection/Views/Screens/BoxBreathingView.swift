@@ -21,7 +21,7 @@ struct BoxBreathingView: View {
 
             BreathingCubeView(
                 phase: viewModel.phase,
-                progress: viewModel.phaseProgress,
+                phaseStartDate: viewModel.phaseStartDate,
                 secondsRemaining: viewModel.secondsRemaining
             )
 

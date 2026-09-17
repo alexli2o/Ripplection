@@ -15,6 +15,11 @@ final class BreathingViewModel {
     private(set) var phase: BreathingPhase = .inhale
     private(set) var secondsRemaining: Int = Int(BreathingPhase.inhale.duration)
     private(set) var cyclesCompleted: Int = 0
+    
+    /// Wall-clock time the current phase began. Views compute a smooth
+    /// 0...1 progress from this via `TimelineView`, instead of deriving it
+    /// from `secondsRemaining`, which only steps once per second.
+    private(set) var phaseStartDate: Date = .now
 
     let totalCycles: Int
 
@@ -35,9 +40,9 @@ final class BreathingViewModel {
     var isFinished: Bool { cyclesCompleted >= totalCycles }
 
     /// Progress of the current phase, 0...1 — used to animate the breathing cube's fill.
-    var phaseProgress: Double {
-        1 - (Double(secondsRemaining) / phase.duration)
-    }
+//    var phaseProgress: Double {
+//        1 - (Double(secondsRemaining) / phase.duration)
+//    }
 
     func start() {
         audio.startAmbient()
@@ -53,6 +58,7 @@ final class BreathingViewModel {
     private func beginPhase(_ newPhase: BreathingPhase) {
         phase = newPhase
         secondsRemaining = Int(newPhase.duration)
+        phaseStartDate = .now
         haptics.playBreathingPhaseChange(to: newPhase)
         audio.playPhaseChime()
 

@@ -45,7 +45,7 @@ final class HapticsService: HapticsProviding {
     }
 
     func playRippleSubmit() {
-        playTransient(intensity: 0.8, sharpness: 0.5, at: 0)
+        playTransient(intensity: 0.9, sharpness: 0.7, at: 0)
         playTransient(intensity: 0.5, sharpness: 0.4, at: 0.12)
         playTransient(intensity: 0.3, sharpness: 0.3, at: 0.24)
     }

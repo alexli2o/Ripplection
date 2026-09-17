@@ -1,15 +1,10 @@
-//
-//  LiquidOrb.swift
-//  Ripplection
-//
-//  Created by Alexander Yofilio S on 15/09/26.
-//
-
 import SwiftUI
 
 /// A glass sphere with an animated liquid fill inside. The fill level can be
 /// static and decorative (Home, CTA) or interactively set by a vertical drag
-/// (Physical Energy), depending on `isInteractive`.
+/// (Physical Energy), depending on `isInteractive`. The drag gesture is only
+/// attached when `isInteractive` is true, so non-interactive orbs never
+/// compete with an `.onTapGesture` applied by the caller.
 struct LiquidOrb: View {
     @Binding var level: Double
     var isInteractive: Bool = false
@@ -21,6 +16,29 @@ struct LiquidOrb: View {
     @State private var dragStartLevel: Double = 0
 
     var body: some View {
+        Group {
+            if isInteractive {
+                orbContent.gesture(dragGesture)
+            } else {
+                orbContent
+            }
+        }
+        .frame(width: diameter, height: diameter)
+        .contentShape(Circle())
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Energy level")
+        .accessibilityValue("\(Int(level * 100)) percent")
+        .accessibilityAdjustableAction { direction in
+            guard isInteractive else { return }
+            switch direction {
+            case .increment: level = (level + 0.05).clamped(to: 0...1)
+            case .decrement: level = (level - 0.05).clamped(to: 0...1)
+            default: break
+            }
+        }
+    }
+
+    private var orbContent: some View {
         TimelineView(.animation) { timeline in
             let t = timeline.date.timeIntervalSinceReferenceDate
             let wavePhase = t.truncatingRemainder(dividingBy: 3) / 3 * 2 * .pi
@@ -43,26 +61,11 @@ struct LiquidOrb: View {
                     .glassEffect(.regular, in: Circle())
             }
         }
-        .frame(width: diameter, height: diameter)
-        .contentShape(Circle())
-        .gesture(dragGesture)
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel("Energy level")
-        .accessibilityValue("\(Int(level * 100)) percent")
-        .accessibilityAdjustableAction { direction in
-            guard isInteractive else { return }
-            switch direction {
-            case .increment: level = (level + 0.05).clamped(to: 0...1)
-            case .decrement: level = (level - 0.05).clamped(to: 0...1)
-            default: break
-            }
-        }
     }
 
     private var dragGesture: some Gesture {
         DragGesture(minimumDistance: 0)
             .onChanged { value in
-                guard isInteractive else { return }
                 if !isDragging {
                     isDragging = true
                     dragStartLevel = level
@@ -71,7 +74,6 @@ struct LiquidOrb: View {
                 level = (dragStartLevel + delta).clamped(to: 0...1)
             }
             .onEnded { _ in
-                guard isInteractive else { return }
                 isDragging = false
                 onDragEnded?()
             }
