@@ -27,7 +27,7 @@ struct HomeView: View {
 
             LiquidOrb(level: $homeOrbLevel, isInteractive: false, tint: .blue, diameter: 220)
                 .overlay {
-                    Button("Start rippling") {
+                    Button("Start Ripplection") {
                         isPresentingFlow = true
                     }
                     .buttonStyle(.glass)

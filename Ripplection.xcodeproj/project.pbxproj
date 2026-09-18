@@ -6,7 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D932B7B9305CC4B900CA1C86 /* breathing_ambient.caf in Resources */ = {isa = PBXBuildFile; fileRef = D932B7B8305CC4B900CA1C86 /* breathing_ambient.caf */; };
+		D932B7BB305CC56F00CA1C86 /* breathing_chime.caf in Resources */ = {isa = PBXBuildFile; fileRef = D932B7BA305CC56F00CA1C86 /* breathing_chime.caf */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		D932B7B8305CC4B900CA1C86 /* breathing_ambient.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = breathing_ambient.caf; sourceTree = "<group>"; };
+		D932B7BA305CC56F00CA1C86 /* breathing_chime.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = breathing_chime.caf; sourceTree = "<group>"; };
 		D9F8B71D3058D643005A0298 /* Ripplection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ripplection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -32,6 +39,8 @@
 		D9F8B7143058D643005A0298 = {
 			isa = PBXGroup;
 			children = (
+				D932B7B8305CC4B900CA1C86 /* breathing_ambient.caf */,
+				D932B7BA305CC56F00CA1C86 /* breathing_chime.caf */,
 				D9F8B71F3058D643005A0298 /* Ripplection */,
 				D9F8B71E3058D643005A0298 /* Products */,
 			);
@@ -109,6 +118,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D932B7B9305CC4B900CA1C86 /* breathing_ambient.caf in Resources */,
+				D932B7BB305CC56F00CA1C86 /* breathing_chime.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +270,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -291,8 +302,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

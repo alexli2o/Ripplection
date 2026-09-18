@@ -28,10 +28,11 @@ struct RippleCTAView: View {
                         .foregroundStyle(.white)
                 }
                 .onTapGesture {
-                    withAnimation(.spring(response: 0.4, dampingFraction: 0.5)) {
+                    withAnimation(.spring(response: 1.5, dampingFraction: 0.35)) {
                         isRippling = true
+                    } completion: {
+                        viewModel.submitRipple()
                     }
-                    viewModel.submitRipple()
                 }
 
             Spacer()

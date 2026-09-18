@@ -12,8 +12,8 @@ import SwiftUI
 struct LiquidWaveShape: Shape {
     var level: Double
     var phase: Double
-    var amplitude: CGFloat = 5
-    var wavelength: CGFloat = 1.4
+    var amplitude: CGFloat = 8
+    var wavelength: CGFloat = 1.25
 
     var animatableData: Double {
         get { level }

@@ -50,7 +50,27 @@ struct LiquidOrb: View {
                 LiquidWaveShape(level: level, phase: wavePhase)
                     .fill(
                         LinearGradient(
-                            colors: [tint.opacity(0.85), tint.opacity(0.45)],
+                            colors: [tint.opacity(0.95), tint.opacity(0.5)],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .clipShape(Circle())
+                
+                LiquidWaveShape(level: level, phase: wavePhase+3)
+                    .fill(
+                        LinearGradient(
+                            colors: [.teal.opacity(0.4), .teal.opacity(0.25)],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .clipShape(Circle())
+                
+                LiquidWaveShape(level: level, phase: wavePhase+5)
+                    .fill(
+                        LinearGradient(
+                            colors: [.secondary.opacity(0.45), .secondary.opacity(0.25)],
                             startPoint: .top,
                             endPoint: .bottom
                         )
